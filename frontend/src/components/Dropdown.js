@@ -11,7 +11,7 @@ export const Dropdown = ({name}) => {
         {isToggle ? <FaAngleUp></FaAngleUp> :        <FaAngleDown></FaAngleDown> }
       </button>
       {isToggle && (
-        <div className="w-full bg-slate-300 rounded-lg py-2 my-2 ">
+        <div className="w-full absolute z-50 bg-slate-300 rounded-lg py-2 my-2 ">
           <button className="py-2 hover:bg-slate-500 hover:text-white font-semibold   w-full border-b border-white">
             Dr Abu Saleh 
           </button>
