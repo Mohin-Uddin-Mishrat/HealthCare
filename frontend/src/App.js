@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import { Doctor } from './pages/Doctor';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/doctor' element={<Doctor></Doctor>}></Route>
+        <Route path='*' element={<Home></Home>}></Route>
       </Routes>
     </div>
   );
