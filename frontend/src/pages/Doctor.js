@@ -69,8 +69,12 @@ export const Doctor = () => {
           >
             &times;
           </button>
-          <div className=" max-w-md z-50 bg-white p-3 w-full shadow-lg rounded-lg ">
-            <h2>hello world</h2>
+          <div className=" max-w-md z-50 bg-white p-3 w-full shadow-lg  rounded-lg ">
+            <h1 className="font-semibold text-blue-400">Symptomps</h1>
+            <textarea className="w-full px-3 text-center py-1 outline-none bg-slate-200 rounded-sm mb-2" placeholder=""></textarea>
+            <h1 className="font-semibold text-blue-400">Time</h1>
+            <input className="w-full px-3 text-center py-1 outline-none bg-slate-200 rounded-sm mb-4" placeholder=""></input>
+            <button onClick={()=> setModalOpen(false)} className="bg-slate-400 w-full py-1 rounded-lg font-bold text-white ">Submit</button>
           </div>
         </div>
       )}
