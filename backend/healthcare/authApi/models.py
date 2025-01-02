@@ -30,7 +30,8 @@ class Doctor(models.Model):
     user = models.OneToOneField(User , on_delete=models.CASCADE)
     designation = models.ManyToManyField(Designation)
     specialization = models.ManyToManyField(Specialization)
-    availebletime = models.ManyToManyField(Availebletime)
+    image = models.ImageField(upload_to='authApi/images/' , blank=True , null=True)
     fee = models.IntegerField()
+    availabletime = models.ManyToManyField(Availebletime , blank=True )
     def __def__(self) :
-        return f"{self.user.first_name}  {self.user.last_name}"
+        return self.user.username
