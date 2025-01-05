@@ -1,4 +1,5 @@
 asgiref
+dj-database-url
 Django
 django-cors-headers
 django-environ
@@ -7,6 +8,8 @@ djangorestframework-simplejwt
 pillow
 psycopg
 psycopg-binary
-PyJWT
-sqlparse
+psycopg2-binary
+PyJWT==
+sqlparse==
+typing_extensions
 tzdata

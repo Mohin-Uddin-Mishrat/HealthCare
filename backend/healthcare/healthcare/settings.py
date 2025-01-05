@@ -3,6 +3,7 @@ env = environ.Env()
 environ.Env.read_env()
 
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,16 +84,25 @@ WSGI_APPLICATION = 'healthcare.wsgi.application'
 # Database
 # Use SQLite for local development
 # In production, SQLite is fine for small apps, but ensure your DB file is stored in a persistent location
+#DATABASES = {
+#    'default': {
+#        'ENGINE': env('DB_ENGINE'),  # Example: 'django.db.backends.postgresql'
+#        'NAME': env('DB_NAME'),      # Example: 'mydatabase'
+#        'USER': env('DB_USER'),      # Example: 'myuser'
+#        'PASSWORD': env('DB_PASSWORD'),  # Example: 'mypassword'
+#        'HOST': env('DB_HOST', default='localhost'),  # Example: 'localhost' or the database server address
+#        'PORT': env('DB_PORT', default='5432'),       # Example: '5432' for PostgreSQL
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': env('DB_ENGINE'),  # Example: 'django.db.backends.postgresql'
-        'NAME': env('DB_NAME'),      # Example: 'mydatabase'
-        'USER': env('DB_USER'),      # Example: 'myuser'
-        'PASSWORD': env('DB_PASSWORD'),  # Example: 'mypassword'
-        'HOST': env('DB_HOST', default='localhost'),  # Example: 'localhost' or the database server address
-        'PORT': env('DB_PORT', default='5432'),       # Example: '5432' for PostgreSQL
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://mishrat:jsabYaC1T8Pwpp7HnOIpjQieYpl9CuZp@dpg-ctrr605umphs73fggsc0-a.oregon-postgres.render.com/hospital_udzk',
+        conn_max_age=600
+    )
 }
+
 
 
 # Password validation
