@@ -4,7 +4,7 @@ import { Form } from '../components/Form'
 export const Login = () => {
   return (
     <div>
-        <Form method={'login'}> </Form>
+        <Form method={'login'} route='/login/'> </Form>
     </div>
   )
 }

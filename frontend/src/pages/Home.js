@@ -4,11 +4,14 @@ import { SerciveCard } from "../components/SerciveCard";
 import { FaAngleLeft, FaAngleRight, FaArrowLeft } from "react-icons/fa";
 import { DoctorFilter } from "../components/DoctorFilter";
 import { ClientReviews } from "../components/ClientReviews";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Home = () => {
   const [currIndex, setCurrIndex] = useState(0);
   const [translatePercent, setTranslatePercent] = useState(33);
-
+  const {isAuthenticated , user, access} = useSelector((state)=> state.auth)
+  const dispatch = useDispatch() ;
+  
   const updateTranslatePercent = () => {
     if (window.innerWidth < 768) {
       setTranslatePercent(100);
@@ -16,7 +19,7 @@ export const Home = () => {
       setTranslatePercent(33.5);
     }
   };
-
+  
   useEffect(() => {
     updateTranslatePercent();
     window.addEventListener("resize", updateTranslatePercent);
@@ -46,6 +49,7 @@ export const Home = () => {
       <div className="flex flex-col justify-center items-center my-5">
         <h1 className="text-xl font-semibold text-blue-400">
           Service as we Provide
+
         </h1>
         <p className="mb-9 max-w-96 text-center">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

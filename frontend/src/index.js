@@ -1,20 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import Footer from './components/Footer';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
+import Footer from "./components/Footer";
+import { Provider } from "react-redux";
+import store from "./redux/Store";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-         <Navbar></Navbar>
-         <App />
-         <Footer></Footer>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Navbar></Navbar>
+        <App />
+        <Footer></Footer>
+      </BrowserRouter>
+      </Provider>
   </React.StrictMode>
 );
 
