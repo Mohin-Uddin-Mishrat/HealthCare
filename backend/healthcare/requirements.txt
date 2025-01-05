@@ -9,7 +9,7 @@ pillow
 psycopg
 psycopg-binary
 psycopg2-binary
-PyJWT==
-sqlparse==
+PyJWT
+sqlparse
 typing_extensions
 tzdata
