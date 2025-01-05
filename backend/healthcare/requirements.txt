@@ -5,7 +5,8 @@ django-environ
 djangorestframework
 djangorestframework-simplejwt
 pillow
-psycopg2
+psycopg
+psycopg-binary
 PyJWT
 sqlparse
 tzdata
