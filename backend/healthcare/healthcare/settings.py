@@ -30,10 +30,8 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Local development server
-    "https://healthcare-tgu6.onrender.com/",  # Add your Render app URL here
-]
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 # Application definition
 INSTALLED_APPS = [
