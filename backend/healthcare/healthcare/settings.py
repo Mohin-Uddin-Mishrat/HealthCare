@@ -32,7 +32,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Local development server
-    "https://your-render-app-url.onrender.com",  # Add your Render app URL here
+    "https://healthcare-tgu6.onrender.com/",  # Add your Render app URL here
 ]
 
 # Application definition
@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware' ,
+    
 ]
 
 ROOT_URLCONF = 'healthcare.urls'
@@ -145,8 +146,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # SECURITY SETTINGS FOR PRODUCTION
 
 # Use a secure setting for allowed hosts in production
-SECURE_SSL_REDIRECT = False  # Redirect HTTP to HTTPS
-CSRF_COOKIE_SECURE = True  # Set CSRF cookie to be secure
-SESSION_COOKIE_SECURE = True  # Set session cookie to be secure
 
 # Define custom settings for Render deployment (for production environment)
