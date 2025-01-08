@@ -17,7 +17,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)  # Set DEBUG to False in production
 
-ALLOWED_HOSTS = ['https://healthcare-tgu6.onrender.com']  # Add your Render app URL here
+ALLOWED_HOSTS = ['healthcare-tgu6.onrender.com']  # Add your Render app URL here
 
 # REST framework settings
 REST_FRAMEWORK = {
