@@ -54,9 +54,9 @@ INSTALLED_APPS = [
 INSTALLED_APPS += ['cloudinary', 'cloudinary_storage']
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dcdtsm8mj',
-    'API_KEY': '471962521747945',
-    'API_SECRET': 'HYNmrsjzcjv4bXmDNcw9WIVWONM',
+    'CLOUD_NAME':  env('CLOUD_NAME'),
+    'API_KEY': env('API_KEY'),
+    'API_SECRET': env('API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -110,7 +110,7 @@ WSGI_APPLICATION = 'healthcare.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://mishrat:jsabYaC1T8Pwpp7HnOIpjQieYpl9CuZp@dpg-ctrr605umphs73fggsc0-a.oregon-postgres.render.com/hospital_udzk',
+        default= env('DB_URL'),
         conn_max_age=600
     )
 }
