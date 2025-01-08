@@ -51,6 +51,16 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
+INSTALLED_APPS += ['cloudinary', 'cloudinary_storage']
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dcdtsm8mj',
+    'API_KEY': '471962521747945',
+    'API_SECRET': 'HYNmrsjzcjv4bXmDNcw9WIVWONM',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
