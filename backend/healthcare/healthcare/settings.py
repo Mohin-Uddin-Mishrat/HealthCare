@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')  
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', default=False)  # Set DEBUG to False in production
+DEBUG = True  # Set DEBUG to False in production
 
 ALLOWED_HOSTS = ['healthcare-tgu6.onrender.com']  # Add your Render app URL here
 
