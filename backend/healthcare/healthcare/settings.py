@@ -60,7 +60,7 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
+MEDIA_URL = '/media/'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -142,14 +142,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
 
 # Ensure that Render handles static and media files correctly
 # You might want to configure the `STATIC_ROOT` and `MEDIA_ROOT` to handle static and media files in production
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Where to collect static files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'  # Directory for media files
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
