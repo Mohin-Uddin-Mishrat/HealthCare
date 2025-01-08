@@ -52,14 +52,6 @@ INSTALLED_APPS = [
 ]
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dcdtsm8mj',
-    'API_KEY': '471962521747945',
-    'API_SECRET': 'HYNmrsjzcjv4bXmDNcw9WIVWONM',
-}
-INSTALLED_APPS += ['cloudinary', 'cloudinary_storage']
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -109,8 +101,7 @@ WSGI_APPLICATION = 'healthcare.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://mishrat:jsabYaC1T8Pwpp7HnOIpjQieYpl9CuZp@dpg-ctrr605umphs73fggsc0-a.oregon-postgres.render.com/hospital_udzk',
+        default=env('DATABASE_URL', default='sqlite:///' + str(BASE_DIR / 'db.sqlite3')),
         conn_max_age=600
     )
 }
@@ -146,7 +137,6 @@ USE_TZ = True
 # Ensure that Render handles static and media files correctly
 # You might want to configure the `STATIC_ROOT` and `MEDIA_ROOT` to handle static and media files in production
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Where to collect static files
-MEDIA_URL = '/media/'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -156,3 +146,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Use a secure setting for allowed hosts in production
 
 # Define custom settings for Render deployment (for production environment)
+STATIC_URL = '/static/'  # Static URL for development
