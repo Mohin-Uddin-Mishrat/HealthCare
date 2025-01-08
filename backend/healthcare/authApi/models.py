@@ -27,7 +27,7 @@ class Availebletime(models.Model):
     
     
 class Doctor(models.Model):
-    name = models.CharField( max_length=50 , blank=True , null= True)
+    user = models.OneToOneField(User , on_delete=models.CASCADE, blank=True , null= True)
     designation = models.ManyToManyField(Designation)
     specialization = models.ManyToManyField(Specialization)
     image = models.ImageField(upload_to='authApi/images/' , blank=True , null=True)
