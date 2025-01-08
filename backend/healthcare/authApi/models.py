@@ -27,11 +27,10 @@ class Availebletime(models.Model):
     
     
 class Doctor(models.Model):
-    user = models.OneToOneField(User , on_delete=models.CASCADE)
+    name = models.CharField( max_length=50 , blank=True , null= True)
     designation = models.ManyToManyField(Designation)
     specialization = models.ManyToManyField(Specialization)
     image = models.ImageField(upload_to='authApi/images/' , blank=True , null=True)
     fee = models.IntegerField()
     availabletime = models.ManyToManyField(Availebletime , blank=True )
-    def __def__(self) :
-        return self.user.username
+  
