@@ -31,6 +31,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
 }
+CSRF_TRUSTED_ORIGINS = ['https://healthcare-tgu6.onrender.com/']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
