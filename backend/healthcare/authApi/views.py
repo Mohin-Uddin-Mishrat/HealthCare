@@ -29,7 +29,6 @@ class AvailableTimeForSpecificDoctor(filters.BaseFilterBackend):
         return query_set
     
 class availableTimeView(viewsets.ModelViewSet) :
-    permission_classes =[IsAuthenticatedOrReadOnly]
     queryset = Availebletime.objects.all()
     serializer_class = availableTimeSerializers
     filter_backends= [AvailableTimeForSpecificDoctor]
