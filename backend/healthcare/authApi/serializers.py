@@ -1,7 +1,8 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 from .models import Doctor , Patient, Designation ,Specialization , Availebletime
 class doctorSerializer(serializers.ModelSerializer) :
-    user = serializers.StringRelatedField(many = False)
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     designation = serializers.StringRelatedField(many = True)
     specialization = serializers.StringRelatedField(many = True)
     availabletime = serializers.StringRelatedField(many =True)
