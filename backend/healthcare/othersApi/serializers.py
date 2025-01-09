@@ -19,7 +19,6 @@ class appointmentSerializers(serializers.ModelSerializer):
         model = appointmentModel
         fields = '__all__'
 class reviewSerializer(serializers.ModelSerializer):
-    doctor= serializers.StringRelatedField(many=False)
     user= serializers.StringRelatedField(many=False)
     class Meta :
         model = reviewModel
