@@ -37,7 +37,7 @@ export const Form = ({ method }) => {
         localStorage.setItem('access', res.data.access)
         localStorage.setItem('refresh', res.data.refresh)
         dispatch(login({isAuthenticated :true, access : res.data.access , refresh:res.data.refresh ,user : decode }))
-        navigate("/");
+        navigate("/HealthCare");
       }
     } catch (error) {
       setError(error.response?.data?.detail || "An error occurred");

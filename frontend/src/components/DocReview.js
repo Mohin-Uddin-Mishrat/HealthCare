@@ -1,6 +1,7 @@
 import React from 'react'
 import doctor from '../Assets/doctor-removebg-preview.png'
 import { FaStar } from 'react-icons/fa'
+import ReactStars from 'react-stars'
 export const DocReview = ({review}) => {
   return (
     <div className='bg-white shadow-md flex flex-col justify-center items-center rounded-lg p-4'>
@@ -8,11 +9,13 @@ export const DocReview = ({review}) => {
         <h2 className='font-semibold text-blue-400'>{review?.user}</h2>
         <p className='text-[10px]'>{review.comment}</p>
         <div className='text-yellow-600 flex'>
-            <FaStar></FaStar>
-            <FaStar></FaStar>
-            <FaStar></FaStar>
-            <FaStar></FaStar>
-            <FaStar className='text-black'></FaStar>
+        <ReactStars
+          count={5}
+          value={review?.rating}
+          color2="#ffd700"
+          size={24}
+          edit={false}
+          />
         </div>
     </div>
   )

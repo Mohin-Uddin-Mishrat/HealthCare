@@ -7,12 +7,12 @@ import { setReviw } from '../redux/doctorSlice';
 export const ClientReviews = () => {
   const dispatch = useDispatch()
   const [loading , setLoading] = useState(true)
+  
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const resPonse = await axios.get(`http://127.0.0.1:8000/review/`);
-        dispatch(setReviw(resPonse.data))
-        setLoading(true)
+        const resPonse = await axios.get(`https://healthcare-tgu6.onrender.com/review/`);
+        setLoading(false)
       } catch (error) {
         console.log(error);
         setLoading(false)

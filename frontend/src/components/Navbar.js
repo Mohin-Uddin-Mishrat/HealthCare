@@ -9,14 +9,14 @@ export const Navbar = () => {
     e.preventDefault();
     setIstoggle(!isToggle);
   };
-  const isAuthenticated = useSelector((state)=> state.auth.isAuthenticated)
+  const {isAuthenticated , user} = useSelector((state)=> state.auth)
   
   return (
     <div className="bg-slate-300 py-3 ">
       <div className="flex justify-between items-center px-2  w-full md:w-[90%] mx-auto">
         <h1 className="text-2xl font-bold text-blue-400">Health Care</h1>
         <div className="hidden md:flex justify-center items-center space-x-5 text-[15px] font-semibold text-slate-600">
-          <Link to="/" className="cursor-pointer hover:text-black">
+          <Link to="/HealthCare" className="cursor-pointer hover:text-black">
             Home
           </Link>
           <span className="cursor-pointer hover:text-black">Contact Us</span>
@@ -26,8 +26,8 @@ export const Navbar = () => {
               <Link to="/logout" className="bg-blue-300 px-3 py-1  rounded-sm">
                 Log Out
               </Link>
-              <Link to="/profile" className=" px-3 py-1  text-slate-500 text-2xl ">
-                <FaUser></FaUser>
+              <Link to="/profile" className=" px-3 py-1  text-slate-500 text-2xl  flex justify-center items-center space-x-1">
+                <FaUser></FaUser> <span>{user.username}</span>
               </Link>
             </>
           ) : (

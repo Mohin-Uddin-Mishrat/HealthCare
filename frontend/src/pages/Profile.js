@@ -1,26 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export const Profile = () => {
-  const [appointments, setAppointments] = useState([
-    {
-      id: 1,
-      date: "2025-01-05",
-      type: "Dental Checkup",
-      doctor: "Dr. Smith",
-    },
-    {
-      id: 2,
-      date: "2025-01-12",
-      type: "Eye Checkup",
-      doctor: "Dr. Jones",
-    },
-  ]);
+  const [appointments, setAppointments] = useState([]);
+
+  const {user} = useSelector(state=> state.auth)
   useEffect(()=>{
     const fetchAppointment = async()=>{
       try{
-        const res = await axios.get("http://127.0.0.1:8000/appointment/")
-        console.log(res.data)
+        const res = await axios.get(`https://healthcare-tgu6.onrender.com/appointment/?user_id=${user?.user_id}`)
+        setAppointments(res.data)
       }catch(error){
         console.log(error)
       }
@@ -35,8 +25,8 @@ export const Profile = () => {
     <div className="max-w-4xl mx-auto p-4">
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
         <h1 className="text-2xl font-bold mb-2">User Profile</h1>
-        <p className="text-gray-700">Username: JohnDoe</p>
-        <p className="text-gray-700">Email: johndoe@example.com</p>
+        <p className="text-blue-700">Username: {user.username}</p>
+        <p className="text-blue-700">Email: {user.email}</p>
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-6">
@@ -54,8 +44,8 @@ export const Profile = () => {
             <tbody>
               {appointments.map((appointment) => (
                 <tr key={appointment.id} className="hover:bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-2">{appointment.date}</td>
-                  <td className="border border-gray-300 px-4 py-2">{appointment.type}</td>
+                  <td className="border border-gray-300 px-4 py-2">{appointment.time}</td>
+                  <td className="border border-gray-300 px-4 py-2">{appointment.appointmentTypes}</td>
                   <td className="border border-gray-300 px-4 py-2">{appointment.doctor}</td>
                   <td className="border border-gray-300 px-4 py-2">
                     <button

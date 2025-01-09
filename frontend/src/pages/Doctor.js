@@ -11,43 +11,47 @@ export const Doctor = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const {user, isAuthenticated} = useSelector(state=> state.auth)
   const {filterReview, reviews} = useSelector(state=> state.doctor)
-  console.log(user.username)
   const { id } = useParams();
   const [data, setdata] = useState([]);
   const [time, setTime] = useState([]);
   const [loading, setLoading] = useState(true);
   const [rating , setRating]= useState(0)
+  const [review , setReviw]= useState([])
   const [comment , setComment]= useState('')
+  const[dataFetch, setdataFetch] = useState(false)
   const dispatch = useDispatch()
+  console.log(data)
   const handleReview = async()=>{
     if(!isAuthenticated) alert("Please Log in First")
     try{
       const payload = {
-        rating:rating,
+        rating:parseInt(rating),
         comment : comment,
-        user :user?.user_id,
+        user :user?.username,
         doctor:parseInt(id)
       }
-      const res = await axios.post("http://127.0.0.1:8000/review/", payload);
-      dispatch(addReview(payload))
+      const res = await axios.post("https://healthcare-tgu6.onrender.com/review/", payload);
       setComment('')
       setRating(0)
-      console.log('success')
+      setdataFetch(!dataFetch)
+      alert('Review created successfully')
       }catch(error){
         console.log(error)
     }
   }
   const HandleAppointment = async () => {
+    if(!isAuthenticated) alert("Please Log in First")
     try {
       const payload = {
-        user:user.user_id , 
-        doctor: parseInt(id), 
+        user:user?.username , 
+        doctor: data.user, 
         symptom: document.querySelector("#symptom-input").value, 
-        time: parseInt(document.querySelector("#time-input").value), 
+        time: document.querySelector("#time-input").value, 
         appointmentTypes:"Online",
       };
-      const res = await axios.post("http://127.0.0.1:8000/appointment/", payload);
-      console.log('seccess')
+      const res = await axios.post("https://healthcare-tgu6.onrender.com/appointment/", payload);
+      setModalOpen(false)
+      alert('Appointment taken successfully')
     } catch (error) {
       console.log(error)
     }
@@ -56,11 +60,13 @@ export const Doctor = () => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const resDoctor = await axios.get(`http://127.0.0.1:8000/user/doctor/${id}/`);
-        const resTime = await axios.get(`http://127.0.0.1:8000/user/availabletime/?doctor_id=${id}`);
+        const resDoctor = await axios.get(`https://healthcare-tgu6.onrender.com/user/doctor/${id}/`);
+        const resTime = await axios.get(`https://healthcare-tgu6.onrender.com/user/availabletime/?doctor_id=${id}`);
+        const resRev = await axios.get(`https://healthcare-tgu6.onrender.com/review/?doctor_id=${id}`);
+        console.log(resRev.data)
+        setReviw(resRev.data)
         setdata(resDoctor.data);
         setTime(resTime.data)
-        dispatch(setFilterReviews(id))
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -70,7 +76,7 @@ export const Doctor = () => {
     
     fetchdata();
     
-  }, []);
+  }, [dataFetch]);
   
   if (loading) return <div>loading...</div>
   return (
@@ -85,14 +91,14 @@ export const Doctor = () => {
             <h1 className="font-semibold text-2xl md:text-4xl text-blue-400">
               {data?.user}
             </h1>
-            <div>
+            <div className="flex flex-wrap">
               {data?.specialization?.map((d, key) => (
-                <span className="mx-1 mb-1 text-[12px] bg-blue-400 text-white font-bold rounded-lg px-1 bg">
+                <h1 className="mx-1 mb-1 text-[12px] bg-blue-400 text-white font-bold rounded-lg px-1 bg">
                   {d}
-                </span>
+                </h1>
               ))}
             </div>
-            <div>
+            <div className="flex flex-wrap">
               {data?.designation.map((d, key) => (
                 <span className="mx-1 mb-1 text-[12px] bg-red-400 text-white font-bold rounded-lg px-1 bg">
                   {d}
@@ -119,7 +125,7 @@ export const Doctor = () => {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {
-              filterReview?.map(((review, key) =>(
+              review?.map(((review, key) =>(
                 <DocReview key={key}  review={review}></DocReview>
               )))
             }
@@ -174,7 +180,7 @@ export const Doctor = () => {
             >
               <option value="">Select a time</option>
               {
-                time?.map((t, key)=>  <option key={key} value={`${t.id}`}>{t.name}</option>
+                time?.map((t, key)=>  <option key={key} value={`${t.name}`}>{t.name}</option>
               )
               }              
             </select>

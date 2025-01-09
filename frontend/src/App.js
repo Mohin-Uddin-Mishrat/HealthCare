@@ -9,6 +9,7 @@ import { ProtectedRout } from './components/ProtectedRout';
 import { Profile } from './pages/Profile';
 import { useDispatch } from 'react-redux';
 import { logout } from './redux/authSlice';
+import NotFound from './pages/NotFound';
 
 function LogOut(){
   const dispatch = useDispatch()
@@ -21,12 +22,13 @@ function App() {
     <div className="">
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/HealthCare' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/doctor/:id' element={<Doctor></Doctor>}></Route>
         <Route path='/logout' element={<LogOut></LogOut>}></Route>
         <Route path='/profile' element={<ProtectedRout><Profile></Profile></ProtectedRout>}></Route>
-        <Route path='*' element={<Home></Home>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
   );

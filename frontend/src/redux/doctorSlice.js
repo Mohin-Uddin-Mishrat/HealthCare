@@ -68,7 +68,8 @@ export default doctorSlice.reducer
 export const fetchDoctor=()=>async(dispatch, getstate)=>{
     try{
         dispatch(setLoading(true))
-        const res = await axios.get('http://127.0.0.1:8000/user/doctor/')
+        const res = await axios.get('https://healthcare-tgu6.onrender.com/user/doctor/')
+        dispatch(setLoading(false))
         dispatch(setDoctor(res.data))
     }catch(error){
         dispatch(setLoading(false)) 
@@ -77,9 +78,9 @@ export const fetchDoctor=()=>async(dispatch, getstate)=>{
 export const fetchDesignation=()=>async(dispatch, getstate)=>{
     try{
         dispatch(setLoading(true))
-        const res = await axios.get(`http://127.0.0.1:8000/user/designation/`)
-        dispatch(setLoading(false))
+        const res = await axios.get(`https://healthcare-tgu6.onrender.com/user/designation/`)
         dispatch(setDesignation(res.data))
+        dispatch(setLoading(false))
     }catch(error){
         dispatch(setLoading(false)) 
     }
@@ -87,9 +88,9 @@ export const fetchDesignation=()=>async(dispatch, getstate)=>{
 export const fetchSpecialization=()=>async(dispatch, getstate)=>{
     try{
         dispatch(setLoading(true))
-        const res = await axios.get(`http://127.0.0.1:8000/user/specialization/`)
-        dispatch(setLoading(false))
+        const res = await axios.get(`https://healthcare-tgu6.onrender.com/user/specialization/`)
         dispatch(setSpecialization(res.data))
+        dispatch(setLoading(false))
     }catch(error){
         dispatch(setLoading(false)) 
     }
@@ -98,8 +99,8 @@ export const fetchService=()=>async(dispatch, getstate)=>{
     try{
         dispatch(setLoading(true))
         const res = await axios.get(`http://127.0.0.1:8000/service/`)
-        dispatch(setLoading(false))
         dispatch(setService(res.data))
+        dispatch(setLoading(false))
     }catch(error){
         dispatch(setLoading(false)) 
     }
