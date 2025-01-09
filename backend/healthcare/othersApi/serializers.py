@@ -12,6 +12,9 @@ class serviceSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 class appointmentSerializers(serializers.ModelSerializer):
+    doctor= serializers.StringRelatedField(many=True)
+    user= serializers.StringRelatedField(many=True)
+    time= serializers.StringRelatedField(many=True)
     class Meta :
         model = appointmentModel
         fields = '__all__'
