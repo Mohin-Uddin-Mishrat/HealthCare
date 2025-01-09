@@ -18,9 +18,14 @@ class ServiceView(viewsets.ModelViewSet):
 class reviewView(viewsets.ModelViewSet):
     queryset = reviewModel.objects.all()
     serializer_class = reviewSerializer
-    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        doctor_id = self.request.query_params.get('doctor_id')  
+        if doctor_id:
+            return queryset.filter(doctor_id=doctor_id)  
+        else:
+            return queryset
 
-    
         
 class appointementView(viewsets.ModelViewSet):
     queryset = appointmentModel.objects.all()

@@ -22,7 +22,7 @@ class Specialization(models.Model):
     def __str__(self) :
         return self.name
     
-class Availebletime(models.Model):
+class Availebletime(models.Model): 
     name = models.CharField(max_length=20)
     def __str__(self) :
         return self.name
