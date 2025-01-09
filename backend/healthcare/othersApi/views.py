@@ -30,7 +30,6 @@ class reviewView(viewsets.ModelViewSet):
 class appointementView(viewsets.ModelViewSet):
     queryset = appointmentModel.objects.all()
     serializer_class = appointmentSerializers
-
     def get_queryset(self):
         queryset = super().get_queryset()
         user_id = self.request.query_params.get('user_id')  
