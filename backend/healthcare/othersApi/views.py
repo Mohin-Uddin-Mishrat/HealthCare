@@ -18,6 +18,9 @@ class ServiceView(viewsets.ModelViewSet):
 class reviewView(viewsets.ModelViewSet):
     queryset = reviewModel.objects.all()
     serializer_class = reviewSerializer
+    
+
+    
         
 class appointementView(viewsets.ModelViewSet):
     queryset = appointmentModel.objects.all()

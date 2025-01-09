@@ -35,5 +35,5 @@ class Doctor(models.Model):
     image = models.ImageField(upload_to='authApi/images/',blank=True ,null= True)
     fee = models.IntegerField()
     availabletime = models.ManyToManyField(Availebletime , blank=True )
-    def __def__(self) :
+    def __str__(self) :
         return self.user.username
