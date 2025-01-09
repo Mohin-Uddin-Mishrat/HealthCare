@@ -19,7 +19,7 @@ class appointmentSerializers(serializers.ModelSerializer):
         model = appointmentModel
         fields = '__all__'
 class reviewSerializer(serializers.ModelSerializer):
-    user= serializers.StringRelatedField(many=False)
+    user = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')  # Accept username
     class Meta :
         model = reviewModel
         fields = '__all__'

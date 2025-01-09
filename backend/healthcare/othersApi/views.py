@@ -37,6 +37,6 @@ class appointementView(viewsets.ModelViewSet):
             return queryset.filter(user_id=user_id)  
         else:
             return queryset
-    def perform_create(self, serializer):#it will automatically save my user
-        serializer.save(user=self.request.user)
+   # def perform_create(self, serializer):#it will automatically save my user
+      #  serializer.save(user=self.request.user)
 
